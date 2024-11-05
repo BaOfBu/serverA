@@ -18,16 +18,16 @@ public class JwtTokenProvider {
             "mot-cai-secret-key-sieu-dai-voi-hon-32-bytes-de-du-dieu-kien-hashing".getBytes());
 
     //Thời gian có hiệu lực của chuỗi jwt
-    // 7 ngày
-    private final long JWT_EXPIRATION = 604800000L;
+    // 1 ngày
+    private final long JWT_EXPIRATION = 86400000L ;
 
     // Tạo ra jwt từ thông tin user
-    public String generateToken(CustomUserDetails userDetails) {
+    public String generateTokenFromUsername(String username) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
         // Tạo chuỗi json web token từ id của user.
         return Jwts.builder()
-                .setSubject(Long.toString(userDetails.getUser().getId()))
+                .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
@@ -35,13 +35,13 @@ public class JwtTokenProvider {
     }
 
     // Lấy thông tin user từ jwt
-    public Long getUserIdFromJWT(String token) {
+    public String getUsernameFromJWT(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
                 .getBody();
 
-        return Long.parseLong(claims.getSubject());
+        return claims.getSubject();
     }
 
     public boolean validateToken(String authToken) {

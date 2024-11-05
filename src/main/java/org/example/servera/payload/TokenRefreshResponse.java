@@ -1,15 +1,16 @@
 package org.example.servera.payload;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class LoginResponse {
+@Getter
+@Setter
+public class TokenRefreshResponse {
     private String accessToken;
-    // thêm vào refreshToken
     private String refreshToken;
     private String tokenType = "Bearer";
 
-    public LoginResponse(String accessToken, String refreshToken) {
+    public TokenRefreshResponse(String accessToken, String refreshToken) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
     }

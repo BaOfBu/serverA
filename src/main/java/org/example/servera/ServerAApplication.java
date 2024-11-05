@@ -1,6 +1,8 @@
 package org.example.servera;
 
+import org.example.servera.entity.RefreshToken;
 import org.example.servera.entity.User;
+import org.example.servera.repository.RefreshTokenRepository;
 import org.example.servera.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,19 +17,18 @@ public class ServerAApplication { //implements CommandLineRunner {
         SpringApplication.run(ServerAApplication.class, args);
     }
 //    @Autowired
-//    UserRepository userRepository;
+//    RefreshTokenRepository refreshTokenRepository;
 //    @Autowired
 //    PasswordEncoder passwordEncoder;
 //
 //    @Override
 //    public void run(String... args) throws Exception {
 //        // Khi chương trình chạy
-//        // Insert vào csdl một user.
-//        User user = new User();
-//        user.setUsername("admin");
-//        user.setPassword(passwordEncoder.encode("123"));
-//        userRepository.save(user);
-//        System.out.println(user);
+//        // Insert vào csdl một refreshtoken
+//        RefreshToken refreshToken = new RefreshToken();
+//        refreshToken.setToken("refreshToken");
+//        refreshTokenRepository.save(refreshToken);
+//
 //    }
 
 }
