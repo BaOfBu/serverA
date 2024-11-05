@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class FilmController {
     }
 
     @GetMapping("/")
-    public List<Film> getFilmsA() {
+    public List<Film> getFilmsA() throws NoSuchAlgorithmException {
         // Lấy danh sách phim từ Server B qua FilmService
         return filmService.getFilmsFromServerB();
     }
